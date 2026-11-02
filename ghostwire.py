@@ -681,7 +681,7 @@ PANEL = "#15181F"
 TERMINAL = "#0A0C10"
 
 
-@Gooey(
+GOOEY_OPTS = dict(
     program_name=APP_NAME,
     program_description="OSINT toolkit - " + DISCLAIMER,
     navigation="SIDEBAR",
@@ -704,9 +704,10 @@ TERMINAL = "#0A0C10"
         "description": "OSINT toolkit built with Gooey", "version": "0.1",
         "copyright": "", "website": "", "developer": "", "license": DISCLAIMER}]}],
 )
-def main():
-    parser = GooeyParser(description=DISCLAIMER)
-    sub = parser.add_subparsers(dest="command")
+
+
+def register_modules(sub):
+    """Add every free module as a sub-parser. GHOSTWIRE PRO calls this too."""
 
     # Username
     p = sub.add_parser("Username", help="Find accounts by username (Maigret, Sherlock)")
@@ -856,13 +857,22 @@ def main():
     o = p.add_argument_group("Output")
     o.add_argument("--folder", metavar="Save to folder", widget="DirChooser", default=DOCS)
 
+
+HANDLERS = {
+    "Username": do_username, "Email": do_email, "Phone": do_phone,
+    "Instagram": do_instagram, "Domain": do_domain, "IP": do_ip,
+    "Wayback": do_wayback, "Metadata": do_metadata, "GitHub": do_github,
+    "Network": do_network, "Breach": do_breach, "Crawl": do_crawl,
+}
+
+
+@Gooey(**GOOEY_OPTS)
+def main():
+    parser = GooeyParser(description=DISCLAIMER)
+    sub = parser.add_subparsers(dest="command")
+    register_modules(sub)
     args = parser.parse_args()
-    {
-        "Username": do_username, "Email": do_email, "Phone": do_phone,
-        "Instagram": do_instagram, "Domain": do_domain, "IP": do_ip,
-        "Wayback": do_wayback, "Metadata": do_metadata, "GitHub": do_github,
-        "Network": do_network, "Breach": do_breach, "Crawl": do_crawl,
-    }[args.command](args)
+    HANDLERS[args.command](args)
 
 
 if __name__ == "__main__":
