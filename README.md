@@ -84,3 +84,7 @@ docs. See [CONTRIBUTING.md](CONTRIBUTING.md) to get started. Each module is a
 ---
 
 *GHOSTWIRE is not affiliated with the third-party tools it wraps. Each belongs to its respective authors and carries its own license.*
+
+## 📄 License
+
+[MIT](LICENSE)
