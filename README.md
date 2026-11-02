@@ -43,23 +43,18 @@ long investigations and it looks good in screenshots.
 
 ## 🚀 Getting started
 
-**AppImage (Linux x86_64):** grab `GHOSTWIRE-x86_64.AppImage` from the
-[latest release](https://github.com/metalmike17/Ghostwire-OSINT/releases/latest), then:
+Grab a build from the [latest release](https://github.com/metalmike17/Ghostwire-OSINT/releases/latest).
+Linux builds are made on glibc 2.35 and run on Ubuntu 22.04+, Debian 12+, Fedora, Arch and similar.
 
-```bash
-chmod +x GHOSTWIRE-x86_64.AppImage
-./GHOSTWIRE-x86_64.AppImage
-```
-
-**Flatpak (Linux x86_64):** download `GHOSTWIRE-x86_64.flatpak` from the
-[latest release](https://github.com/metalmike17/Ghostwire-OSINT/releases/latest), then:
-
-```bash
-flatpak install --user GHOSTWIRE-x86_64.flatpak
-flatpak run io.github.metalmike17.Ghostwire
-```
-
-(Requires the GNOME 51 runtime, which Flatpak will offer to fetch from Flathub.)
+| Platform | File | Install |
+|---|---|---|
+| Any Linux (x86_64) | `GHOSTWIRE-x86_64.AppImage` | `chmod +x GHOSTWIRE-x86_64.AppImage && ./GHOSTWIRE-x86_64.AppImage` |
+| Debian / Ubuntu / Mint / Kali | `ghostwire_0.1.0_amd64.deb` | `sudo apt install ./ghostwire_0.1.0_amd64.deb` |
+| Fedora / RHEL / openSUSE | `ghostwire-0.1.0-1.x86_64.rpm` | `sudo dnf install ./ghostwire-0.1.0-1.x86_64.rpm` |
+| Arch / Manjaro | `packaging/PKGBUILD` | `cd packaging && makepkg -si` |
+| Flatpak | `GHOSTWIRE-x86_64.flatpak` | `flatpak install --user GHOSTWIRE-x86_64.flatpak` |
+| Any Linux (tarball) | `ghostwire-0.1.0-linux-x86_64.tar.gz` | extract, run `./run-ghostwire.sh` |
+| Windows / macOS / Linux ARM64 | built by CI (experimental) | see the [Actions](https://github.com/metalmike17/Ghostwire-OSINT/actions) tab |
 
 **From source:**
 

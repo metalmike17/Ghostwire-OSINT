@@ -1,0 +1,60 @@
+name: Build releases
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install wxPython && pip install -r packaging/requirements.txt
+      - run: pyinstaller --noconfirm packaging/ghostwire.spec
+      - run: Compress-Archive -Path dist/ghostwire -DestinationPath GHOSTWIRE-windows-x86_64.zip
+      - uses: actions/upload-artifact@v4
+        with: { name: windows-x86_64, path: GHOSTWIRE-windows-x86_64.zip }
+
+  macos:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: macos-14,     arch: arm64 }    # Apple Silicon
+          - { os: macos-15-intel, arch: x86_64 } # Intel
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install wxPython && pip install -r packaging/requirements.txt
+      - run: pyinstaller --noconfirm packaging/ghostwire.spec
+      - run: ditto -c -k --keepParent dist/GHOSTWIRE.app GHOSTWIRE-macos-${{ matrix.arch }}.zip
+      - uses: actions/upload-artifact@v4
+        with:
+          name: macos-${{ matrix.arch }}
+          path: GHOSTWIRE-macos-${{ matrix.arch }}.zip
+
+  linux-arm64:
+    runs-on: ubuntu-22.04-arm
+    continue-on-error: true   # wxPython has no prebuilt aarch64 wheel; may need a long source build
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.10' }
+      - run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libwebkit2gtk-4.0-dev libsdl2-dev libnotify-dev libsm-dev libgl1-mesa-dev libglu1-mesa-dev
+          pip install wxPython
+          pip install -r packaging/requirements.txt
+      - run: pyinstaller --noconfirm packaging/ghostwire.spec
+      - run: tar -C dist -czf ghostwire-linux-arm64.tar.gz ghostwire
+      - uses: actions/upload-artifact@v4
+        with: { name: linux-arm64, path: ghostwire-linux-arm64.tar.gz }

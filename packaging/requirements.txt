@@ -1,0 +1,8 @@
+gooey
+requests
+dnspython
+pillow
+instaloader
+maigret
+sherlock-project
+pyinstaller

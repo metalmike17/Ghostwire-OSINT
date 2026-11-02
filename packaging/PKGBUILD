@@ -1,0 +1,33 @@
+# Maintainer: metalmike17 <michaeljg0717@gmail.com>
+pkgname=ghostwire-bin
+pkgver=0.1.0
+pkgrel=1
+pkgdesc='GHOSTWIRE OSINT toolkit (prebuilt, self-contained)'
+arch=('x86_64')
+url='https://github.com/metalmike17/Ghostwire-OSINT'
+license=('MIT')
+depends=('gtk3' 'libsm' 'libglvnd' 'glu')
+optdepends=('nmap: Network module' 'whois: Domain module' 'perl-image-exiftool: Metadata module')
+options=('!strip')
+source=("https://github.com/metalmike17/Ghostwire-OSINT/releases/download/v${pkgver}/ghostwire-${pkgver}-linux-x86_64.tar.gz")
+sha256sums=('cd167510971e9d4d84ad9fd41677c25e75d5bd612a361807fb34d038b29646c9')
+
+package() {
+  cd "ghostwire-${pkgver}-linux-x86_64"
+  install -d "$pkgdir/opt" "$pkgdir/usr/bin"
+  cp -r ghostwire "$pkgdir/opt/ghostwire"
+  ln -s /opt/ghostwire/ghostwire "$pkgdir/usr/bin/ghostwire"
+  install -Dm644 ghostwire.png "$pkgdir/usr/share/icons/hicolor/256x256/apps/ghostwire.png"
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+  cat > ghostwire.desktop <<D
+[Desktop Entry]
+Type=Application
+Name=GHOSTWIRE
+Comment=OSINT toolkit
+Exec=ghostwire
+Icon=ghostwire
+Categories=Network;Utility;
+Terminal=false
+D
+  install -Dm644 ghostwire.desktop "$pkgdir/usr/share/applications/ghostwire.desktop"
+}
