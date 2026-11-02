@@ -1,4 +1,30 @@
-# 👻 GHOSTWIRE
+<div align="center">
+
+<img src="docs/banner.svg" alt="GHOSTWIRE - neon-lit OSINT toolkit" width="100%">
+
+<br>
+
+<a href="https://github.com/metalmike17/Ghostwire-OSINT/releases/latest"><img src="https://img.shields.io/github/v/release/metalmike17/Ghostwire-OSINT?style=for-the-badge&labelColor=0D0F14&color=00C8D6&label=release" alt="Latest release"></a>
+<a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-FF2BD6?style=for-the-badge&labelColor=0D0F14" alt="MIT license"></a>
+<img src="https://img.shields.io/badge/python-3-00C8D6?style=for-the-badge&labelColor=0D0F14&logo=python&logoColor=white" alt="Python 3">
+<img src="https://img.shields.io/badge/modules-12-FF2BD6?style=for-the-badge&labelColor=0D0F14" alt="12 modules">
+<a href="https://github.com/metalmike17/Ghostwire-OSINT/stargazers"><img src="https://img.shields.io/github/stars/metalmike17/Ghostwire-OSINT?style=for-the-badge&labelColor=0D0F14&color=00C8D6" alt="Stars"></a>
+
+<br><br>
+
+**[⬇️ Download](https://github.com/metalmike17/Ghostwire-OSINT/releases/latest)** &nbsp;·&nbsp;
+**[⚡ Modules](#-modules)** &nbsp;·&nbsp;
+**[🚀 Install](#-getting-started)** &nbsp;·&nbsp;
+**[🤝 Contribute](CONTRIBUTING.md)** &nbsp;·&nbsp;
+**[🗺️ Roadmap](#%EF%B8%8F-roadmap)**
+
+<br>
+
+<img src="docs/screenshot.png" alt="GHOSTWIRE desktop app: module sidebar and search form" width="860">
+
+</div>
+
+<img src="docs/divider.svg" width="100%" alt="">
 
 **Every OSINT tool you actually use, in one neon-lit cockpit.**
 
@@ -13,7 +39,7 @@ copy-pasting between tools.
 > native GUI that is still just a Python script underneath. Every module is
 > readable, hackable and easy to extend.
 
----
+<img src="docs/divider.svg" width="100%" alt="">
 
 ## ⚡ Modules
 
@@ -35,11 +61,15 @@ copy-pasting between tools.
 Every module shares proxy support (e.g. `socks5://127.0.0.1:1080`), adjustable
 timeouts, multi-target input, and a save-to-folder option.
 
+<img src="docs/divider.svg" width="100%" alt="">
+
 ## 🎨 The look
 
 A cyberpunk palette: ink-black background, neon cyan terminal text, magenta
 errors, and a sidebar that stays out of your way. It's easy on the eyes during
 long investigations and it looks good in screenshots.
+
+<img src="docs/divider.svg" width="100%" alt="">
 
 ## 🚀 Getting started
 
@@ -76,6 +106,8 @@ modules that need a tool depend on it:
 - `nmap` (Network), `whois` (Domain), `phoneinfoga` (Phone), `subfinder` and `httpx` (Domain), `exiftool` (Metadata)
 - [theHarvester](https://github.com/laramies/theHarvester) and [Photon](https://github.com/s0md3v/Photon), cloned into `~/.local/share/ghostwire-tools/`
 
+<img src="docs/divider.svg" width="100%" alt="">
+
 ## ⚖️ Use it responsibly
 
 GHOSTWIRE only uses public sources, but how you use it is on you. Investigate
@@ -83,11 +115,15 @@ only people, accounts and systems you are authorized to look into, follow the
 law and each service's terms, and remember that results can be wrong or out of
 date. Scan only networks you own or have permission to test.
 
+<img src="docs/divider.svg" width="100%" alt="">
+
 ## 🤝 Contributing
 
 Contributions are welcome: new modules, new data sources, bug fixes, UI polish,
 docs. See [CONTRIBUTING.md](CONTRIBUTING.md) to get started. Each module is a
 `do_<name>` function plus a sub-parser, so adding one is usually an afternoon's work.
+
+<img src="docs/divider.svg" width="100%" alt="">
 
 ## 🗺️ Roadmap
 

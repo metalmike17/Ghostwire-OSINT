@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 340" width="1280" height="340" role="img" aria-label="GHOSTWIRE - neon-lit OSINT toolkit">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0D0F14"/><stop offset="1" stop-color="#07080C"/></linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff" stop-opacity="1"/></linearGradient>
+    <mask id="gridmask"><rect width="1280" height="340" fill="url(#fade)"/></mask>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#00C8D6" stroke-opacity=".22" stroke-width="1"/></pattern>
+    <pattern id="scan" width="4" height="4" patternUnits="userSpaceOnUse"><rect width="4" height="1" fill="#000" fill-opacity=".28"/></pattern>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#00C8D6" stop-opacity="0"/><stop offset=".5" stop-color="#00C8D6" stop-opacity=".9"/><stop offset="1" stop-color="#FF2BD6" stop-opacity="0"/></linearGradient>
+    <filter id="glow" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <filter id="glow2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+  <style>
+    .mono{font-family:"JetBrains Mono","Fira Code","SF Mono",Consolas,"DejaVu Sans Mono",monospace}
+    .title{font-size:104px;font-weight:800;letter-spacing:10px}
+    .tag{font-size:21px;letter-spacing:3px}
+    .chip{font-size:15px;letter-spacing:2px}
+    @keyframes sweep{0%{transform:translateY(-20px);opacity:0}10%{opacity:1}90%{opacity:1}100%{transform:translateY(360px);opacity:0}}
+    @keyframes gl1{0%,86%,100%{transform:translate(0,0)}88%{transform:translate(-7px,2px)}90%{transform:translate(6px,-2px)}92%{transform:translate(-4px,0)}94%{transform:translate(0,0)}}
+    @keyframes gl2{0%,86%,100%{transform:translate(0,0)}88%{transform:translate(7px,-2px)}90%{transform:translate(-6px,2px)}92%{transform:translate(4px,0)}94%{transform:translate(0,0)}}
+    @keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+    @keyframes pulse{0%,100%{opacity:.55}50%{opacity:1}}
+    @keyframes drift{from{transform:translateY(0)}to{transform:translateY(40px)}}
+    .sweep{animation:sweep 5s linear infinite}
+    .gl1{animation:gl1 6s infinite}.gl2{animation:gl2 6s infinite}
+    .cur{animation:blink 1s steps(1) infinite}
+    .ghost{animation:float 4s ease-in-out infinite}
+    .eye{animation:pulse 2.2s ease-in-out infinite}
+    .drift{animation:drift 4s linear infinite}
+  </style>
+  <rect width="1280" height="340" fill="url(#bg)"/>
+  <g mask="url(#gridmask)"><rect class="drift" y="-40" width="1280" height="420" fill="url(#grid)"/></g>
+  <circle cx="190" cy="150" r="170" fill="#FF2BD6" fill-opacity=".07"/>
+  <circle cx="1100" cy="240" r="200" fill="#00C8D6" fill-opacity=".06"/>
+  <!-- ghost -->
+  <g class="ghost" transform="translate(70 62)" filter="url(#glow)">
+    <path d="M60 0C27 0 6 25 6 58v66l17-13 18 13 19-15 19 15 18-13 17 13V58C120 25 93 0 60 0z" fill="#0D0F14" stroke="#FF2BD6" stroke-width="5" stroke-linejoin="round"/>
+    <circle class="eye" cx="42" cy="56" r="9" fill="#00C8D6"/><circle class="eye" cx="78" cy="56" r="9" fill="#00C8D6"/>
+  </g>
+  <!-- title with glitch layers -->
+  <g class="mono title">
+    <text class="gl1" x="250" y="178" fill="#FF2BD6" fill-opacity=".85">GHOSTWIRE</text>
+    <text class="gl2" x="250" y="178" fill="#00C8D6" fill-opacity=".85">GHOSTWIRE</text>
+    <text x="250" y="178" fill="#F2F4F8" filter="url(#glow2)">GHOSTWIRE</text>
+  </g>
+  <rect x="252" y="200" width="760" height="3" fill="url(#beam)"/>
+  <text class="mono tag" x="252" y="240" fill="#00C8D6">EVERY OSINT TOOL YOU USE <tspan fill="#FF2BD6"> // ONE NEON COCKPIT</tspan><tspan class="cur" fill="#00C8D6">_</tspan></text>
+  <g class="mono chip" fill="none" stroke-width="1.5">
+    <g transform="translate(252 266)"><rect width="140" height="30" rx="4" stroke="#00C8D6"/><text x="70" y="20" text-anchor="middle" fill="#00C8D6" stroke="none">12 MODULES</text></g>
+    <g transform="translate(404 266)"><rect width="182" height="30" rx="4" stroke="#FF2BD6"/><text x="91" y="20" text-anchor="middle" fill="#FF2BD6" stroke="none">PUBLIC SOURCES</text></g>
+    <g transform="translate(598 266)"><rect width="140" height="30" rx="4" stroke="#00C8D6"/><text x="70" y="20" text-anchor="middle" fill="#00C8D6" stroke="none">MIT / FREE</text></g>
+    <g transform="translate(750 266)"><rect width="150" height="30" rx="4" stroke="#FF2BD6"/><text x="75" y="20" text-anchor="middle" fill="#FF2BD6" stroke="none">LINUX-FIRST</text></g>
+  </g>
+
+  <rect width="1280" height="340" fill="url(#scan)"/>
+  <rect class="sweep" width="1280" height="3" fill="#00C8D6" fill-opacity=".55" filter="url(#glow2)"/>
+  <rect x="1" y="1" width="1278" height="338" fill="none" stroke="#00C8D6" stroke-opacity=".35"/>
+</svg>
