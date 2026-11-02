@@ -51,6 +51,16 @@ chmod +x GHOSTWIRE-x86_64.AppImage
 ./GHOSTWIRE-x86_64.AppImage
 ```
 
+**Flatpak (Linux x86_64):** download `GHOSTWIRE-x86_64.flatpak` from the
+[latest release](https://github.com/metalmike17/Ghostwire-OSINT/releases/latest), then:
+
+```bash
+flatpak install --user GHOSTWIRE-x86_64.flatpak
+flatpak run io.github.metalmike17.Ghostwire
+```
+
+(Requires the GNOME 51 runtime, which Flatpak will offer to fetch from Flathub.)
+
 **From source:**
 
 ```bash
