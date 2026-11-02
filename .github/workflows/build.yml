@@ -17,9 +17,9 @@ jobs:
         with: { python-version: '3.12' }
       - run: pip install wxPython && pip install -r packaging/requirements.txt
       - run: pyinstaller --noconfirm packaging/ghostwire.spec
-      - run: Compress-Archive -Path dist/ghostwire -DestinationPath GHOSTWIRE-windows-x86_64.zip
+      - run: Move-Item dist/ghostwire.exe GHOSTWIRE-windows-x86_64.exe
       - uses: actions/upload-artifact@v4
-        with: { name: windows-x86_64, path: GHOSTWIRE-windows-x86_64.zip }
+        with: { name: windows-x86_64, path: GHOSTWIRE-windows-x86_64.exe }
 
   macos:
     strategy:

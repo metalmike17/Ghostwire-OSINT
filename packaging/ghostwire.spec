@@ -22,10 +22,14 @@ a = Analysis(
     noarchive=False, optimize=0,
 )
 pyz = PYZ(a.pure)
-exe = EXE(pyz, a.scripts, [], exclude_binaries=True, name='ghostwire',
-          debug=False, strip=False, upx=False, console=(sys.platform != 'win32'),
-          icon=None)
-coll = COLLECT(exe, a.binaries, a.datas, strip=False, upx=False, name='ghostwire')
+if sys.platform == 'win32':
+    # Single-file executable on Windows
+    exe = EXE(pyz, a.scripts, a.binaries, a.datas, [], name='ghostwire',
+              debug=False, strip=False, upx=False, console=False, icon=None)
+else:
+    exe = EXE(pyz, a.scripts, [], exclude_binaries=True, name='ghostwire',
+              debug=False, strip=False, upx=False, console=True, icon=None)
+    coll = COLLECT(exe, a.binaries, a.datas, strip=False, upx=False, name='ghostwire')
 
 if sys.platform == 'darwin':
     app = BUNDLE(coll, name='GHOSTWIRE.app', bundle_identifier='io.github.metalmike17.ghostwire')
